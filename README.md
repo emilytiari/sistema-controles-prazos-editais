@@ -4,6 +4,8 @@
 
 O **SCPE (Sistema de Controle de Prazos de Editais)** é um projeto acadêmico desenvolvido para apoiar o acompanhamento de processos de contratação docente por meio de editais, com foco em **prazos, etapas, responsáveis, comunicação e rastreabilidade**.
 
+> **Status do projeto:** em andamento. O SCPE está atualmente em sua etapa final de desenvolvimento acadêmico, com foco na consolidação da solução e na criação de uma camada de Business Intelligence para análise dos dados do processo.
+
 Esta versão foi preparada especificamente para portfólio e demonstração. Ela reproduz parte da experiência e da lógica do sistema original utilizando apenas dados fictícios e armazenamento temporário no navegador.
 
 ## Objetivo do projeto original
@@ -79,6 +81,27 @@ Entre as funcionalidades projetadas e implementadas ao longo do desenvolvimento 
 - cadastro de cursos e disciplinas;
 - notificações relacionadas ao andamento do processo;
 - indicadores e possibilidades de integração com ferramentas de BI.
+
+## Etapa atual e próxima entrega: Business Intelligence
+
+O SCPE **ainda está em desenvolvimento** e se encontra em sua etapa final no Projeto Integrador.
+
+Nesta fase, a equipe está direcionando o trabalho para a construção de uma camada de **Business Intelligence**, com o objetivo de transformar os dados gerados pelo sistema em informações úteis para acompanhamento e tomada de decisão.
+
+A proposta é desenvolver dashboards e indicadores que permitam visualizar, por exemplo:
+
+- quantidade de editais criados por período;
+- distribuição dos editais por status;
+- volume de processos em andamento, concluídos e arquivados;
+- tempo médio de permanência nas etapas;
+- identificação das etapas que mais concentram atrasos;
+- comparação de desempenho entre períodos;
+- acompanhamento de prazos e possíveis gargalos do processo;
+- evolução dos indicadores ao longo do tempo.
+
+Para isso, a equipe pretende trabalhar com os dados estruturados no banco do SCPE e utilizar ferramentas de BI para criar **dashboards gerenciais, métricas e visualizações** que complementem a aplicação operacional.
+
+Essa etapa representa a transição de um sistema focado apenas no controle do processo para uma solução que também possa oferecer **apoio analítico à gestão**.
 
 ## Tecnologias utilizadas no projeto original
 
@@ -240,14 +263,15 @@ O SCPE permitiu trabalhar não apenas aspectos técnicos de desenvolvimento, mas
 - trabalho em equipe;
 - documentação de projeto;
 - testes e validação;
-- desenvolvimento incremental de um MVP.
+- desenvolvimento incremental de um MVP;
+- definição de indicadores e preparação de dados para BI.
 
 ## Contexto acadêmico
 
 Projeto desenvolvido no curso de **Gestão da Tecnologia da Informação da FATEC Franco da Rocha**, como parte de um Projeto Integrador realizado em equipe.
 
-A solução foi desenvolvida de forma colaborativa, envolvendo atividades de desenvolvimento, documentação, análise de negócio, banco de dados, integrações, testes e gestão do projeto.
+A solução foi desenvolvida de forma colaborativa, envolvendo atividades de desenvolvimento, documentação, análise de negócio, banco de dados, integrações, testes, gestão do projeto e, em sua etapa final, **Business Intelligence e criação de dashboards**.
 
 ---
 
-**Este repositório apresenta uma versão sanitizada e demonstrativa do projeto para fins de portfólio.**
+**Este repositório apresenta uma versão sanitizada e demonstrativa de um projeto acadêmico ainda em andamento, publicada para fins de portfólio.**
