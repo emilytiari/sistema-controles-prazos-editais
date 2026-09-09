@@ -8,22 +8,24 @@ type Edital = {
   disciplina: string;
   curso: string;
   data: string;
+  carater: string;
   status: Status;
   etapa: string;
   progresso: number;
+  prazo: string;
 };
 
 const initialEditais: Edital[] = [
-  { id: 1, numero: "014/2026", disciplina: "Banco de Dados", curso: "Gestão da Tecnologia da Informação", data: "18/08/2026", status: "andamento", etapa: "Análise documental", progresso: 38 },
-  { id: 2, numero: "018/2026", disciplina: "Programação Web", curso: "Desenvolvimento de Software Multiplataforma", data: "29/08/2026", status: "andamento", etapa: "Prova didática", progresso: 63 },
-  { id: 3, numero: "009/2026", disciplina: "Engenharia de Software", curso: "Gestão da Tecnologia da Informação", data: "12/05/2026", status: "concluido", etapa: "Encerrado", progresso: 100 },
-  { id: 4, numero: "006/2026", disciplina: "Laboratório de Desenvolvimento", curso: "Desenvolvimento de Software Multiplataforma", data: "03/04/2026", status: "arquivado", etapa: "Arquivado", progresso: 20 },
+  { id: 1, numero: "014/2026", disciplina: "Banco de Dados", curso: "Gestão da Tecnologia da Informação", data: "18/08/2026", carater: "Determinado", status: "andamento", etapa: "Análise documental", progresso: 38, prazo: "18/09/2026" },
+  { id: 2, numero: "018/2026", disciplina: "Programação Web", curso: "Desenvolvimento de Software Multiplataforma", data: "29/08/2026", carater: "Indeterminado", status: "andamento", etapa: "Prova didática", progresso: 63, prazo: "22/09/2026" },
+  { id: 3, numero: "009/2026", disciplina: "Engenharia de Software", curso: "Gestão da Tecnologia da Informação", data: "12/05/2026", carater: "Determinado", status: "concluido", etapa: "Workflow concluído", progresso: 100, prazo: "Concluído" },
+  { id: 4, numero: "006/2026", disciplina: "Laboratório de Desenvolvimento", curso: "Desenvolvimento de Software Multiplataforma", data: "03/04/2026", carater: "Determinado", status: "arquivado", etapa: "Arquivado", progresso: 20, prazo: "Arquivado" },
 ];
 
-const tabs: { id: Status; label: string }[] = [
-  { id: "andamento", label: "Em andamento" },
-  { id: "concluido", label: "Concluídos" },
-  { id: "arquivado", label: "Arquivados" },
+const menuItems = [
+  { id: "andamento", label: "EDITAIS EM ANDAMENTO", icon: "▣" },
+  { id: "concluido", label: "EDITAIS CONCLUÍDOS", icon: "✓" },
+  { id: "arquivado", label: "EDITAIS ARQUIVADOS", icon: "▤" },
 ];
 
 export default function App() {
@@ -32,6 +34,8 @@ export default function App() {
   const [editais, setEditais] = useState<Edital[]>(initialEditais);
   const [email, setEmail] = useState("demo@scpe.local");
   const [password, setPassword] = useState("demo123");
+  const [expanded, setExpanded] = useState<number | null>(null);
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   const filtered = useMemo(() => editais.filter((e) => e.status === active), [editais, active]);
 
@@ -42,12 +46,16 @@ export default function App() {
   }
 
   function avancar(id: number) {
-    setEditais((current) => current.map((e) => e.id === id ? {
-      ...e,
-      progresso: Math.min(100, e.progresso + 12),
-      etapa: e.progresso >= 88 ? "Encerrado" : "Próxima etapa",
-      status: e.progresso >= 88 ? "concluido" : e.status,
-    } : e));
+    setEditais((current) => current.map((e) => {
+      if (e.id !== id) return e;
+      const novoProgresso = Math.min(100, e.progresso + 12);
+      return {
+        ...e,
+        progresso: novoProgresso,
+        etapa: novoProgresso >= 100 ? "Workflow concluído" : "Próxima etapa do fluxo",
+        status: novoProgresso >= 100 ? "concluido" : e.status,
+      };
+    }));
   }
 
   function arquivar(id: number) {
@@ -57,95 +65,145 @@ export default function App() {
   if (!logged) {
     return (
       <div className="login-page">
-        <div className="login-card">
-          <div className="brand-mark">SCPE</div>
-          <h1>Sistema de Controle de Prazos de Editais</h1>
-          <p className="muted">Versão demonstrativa para portfólio. Nenhum dado real é utilizado.</p>
+        <div className="login-card original-login">
+          <div className="login-logo">SCPE</div>
+          <h1>Acesso ao Sistema</h1>
+          <p className="login-subtitle">Sistema de Controle de Prazos de Editais</p>
+
+          <div className="demo-banner">
+            Versão demonstrativa para portfólio — nenhum dado real é utilizado.
+          </div>
+
           <form onSubmit={login}>
-            <label>E-mail</label>
-            <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" />
-            <label>Senha</label>
-            <input value={password} onChange={(e) => setPassword(e.target.value)} type="password" />
-            <button className="primary" type="submit">Entrar na demonstração</button>
+            <label htmlFor="email">Usuário</label>
+            <input id="email" value={email} onChange={(e) => setEmail(e.target.value)} type="email" placeholder="nome@exemplo.com" />
+            <label htmlFor="password">Senha</label>
+            <input id="password" value={password} onChange={(e) => setPassword(e.target.value)} type="password" placeholder="••••••••" />
+            <button className="primary login-button" type="submit">Entrar</button>
           </form>
-          <div className="demo-note">Credenciais de demonstração já preenchidas.</div>
+
+          <div className="login-divider"><span>ou</span></div>
+          <div className="login-links">
+            <button type="button">Criar nova conta</button>
+            <button type="button">Esqueci minha senha</button>
+          </div>
+
+          <div className="credentials-box">
+            <strong>Acesso de demonstração</strong>
+            <span>demo@scpe.local</span>
+            <span>demo123</span>
+          </div>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="app-shell">
-      <aside className="sidebar">
-        <div className="sidebar-brand">SCPE</div>
-        <div className="sidebar-section">EDITAIS</div>
-        {tabs.map((tab) => (
-          <button key={tab.id} className={active === tab.id ? "nav active" : "nav"} onClick={() => setActive(tab.id)}>
-            {tab.label}
-          </button>
-        ))}
-        <div className="sidebar-section">GESTÃO</div>
-        <button className="nav">Cadastrar edital</button>
-        <button className="nav">Configurar etapas</button>
-        <button className="nav">Usuários</button>
-        <button className="nav">Cursos e disciplinas</button>
-        <div className="spacer" />
-        <button className="nav" onClick={() => setLogged(false)}>Sair</button>
+    <div className="scpe-shell">
+      {mobileOpen && <div className="mobile-overlay" onClick={() => setMobileOpen(false)} />}
+
+      <aside className={mobileOpen ? "sidebar sidebar-open" : "sidebar"}>
+        <div className="sidebar-header">
+          <h1>SCPE</h1>
+          <button className="mobile-close" onClick={() => setMobileOpen(false)}>×</button>
+        </div>
+
+        <nav className="sidebar-nav">
+          <div className="section-title">EDITAIS</div>
+          {menuItems.map((item) => (
+            <button
+              key={item.id}
+              className={active === item.id ? "sidebar-item active" : "sidebar-item"}
+              onClick={() => { setActive(item.id as Status); setMobileOpen(false); }}
+            >
+              <span className="sidebar-icon">{item.icon}</span>
+              {item.label}
+            </button>
+          ))}
+
+          <button className="sidebar-item" onClick={() => alert("Cadastro simulado na versão de portfólio.")}><span className="sidebar-icon">＋</span>CADASTRAR EDITAL</button>
+          <button className="sidebar-item" onClick={() => alert("Configuração de etapas simulada na versão de portfólio.")}><span className="sidebar-icon">⚙</span>CONFIGURAR ETAPAS</button>
+
+          <div className="section-title">USUÁRIOS</div>
+          <button className="sidebar-item" onClick={() => alert("Gestão de usuários simulada na versão de portfólio.")}><span className="sidebar-icon">◉</span>LISTAR USUÁRIOS</button>
+
+          <div className="section-title">CURSO E DISCIPLINA</div>
+          <button className="sidebar-item" onClick={() => alert("Cadastro de cursos e disciplinas simulado.")}><span className="sidebar-icon">▱</span>CADASTRAR</button>
+        </nav>
+
+        <div className="sidebar-footer">
+          <button onClick={() => setLogged(false)}>Sair</button>
+        </div>
       </aside>
 
-      <main className="content">
+      <div className="main-column">
         <header className="topbar">
-          <div>
-            <h2>Painel de editais</h2>
-            <p className="muted">Acompanhamento demonstrativo de prazos e etapas</p>
+          <div className="topbar-left">
+            <button className="mobile-menu" onClick={() => setMobileOpen(true)}>☰</button>
+            <h2>SCPE</h2>
           </div>
-          <div className="user-chip">Felipe Demo · Administração</div>
+          <button className="profile-button" title="Perfil">●</button>
         </header>
 
-        <section className="stats-grid">
-          <div className="stat-card"><span>Em andamento</span><strong>{editais.filter((e) => e.status === "andamento").length}</strong></div>
-          <div className="stat-card"><span>Concluídos</span><strong>{editais.filter((e) => e.status === "concluido").length}</strong></div>
-          <div className="stat-card"><span>Arquivados</span><strong>{editais.filter((e) => e.status === "arquivado").length}</strong></div>
-        </section>
-
-        <section className="panel">
-          <div className="panel-header">
+        <main className="dashboard-content">
+          <div className="page-heading">
             <div>
-              <h3>{tabs.find((t) => t.id === active)?.label}</h3>
-              <p className="muted">Dados fictícios usados apenas para demonstração.</p>
+              <h1>{active === "andamento" ? "Editais em Andamento" : active === "concluido" ? "Editais Concluídos" : "Editais Arquivados"}</h1>
+              <p>{active === "andamento" ? "Acompanhe o andamento e os prazos dos editais ativos" : active === "concluido" ? "Histórico de processos finalizados" : "Processos removidos do fluxo ativo"}</p>
             </div>
-            <button className="primary" onClick={() => alert("Cadastro simulado na versão de portfólio.")}>Novo edital</button>
+            <div className="demo-chip">Ambiente demonstrativo</div>
           </div>
 
-          <div className="cards">
+          <section className="summary-grid">
+            <div className="summary-card"><span>Em andamento</span><strong>{editais.filter((e) => e.status === "andamento").length}</strong></div>
+            <div className="summary-card"><span>Concluídos</span><strong>{editais.filter((e) => e.status === "concluido").length}</strong></div>
+            <div className="summary-card"><span>Arquivados</span><strong>{editais.filter((e) => e.status === "arquivado").length}</strong></div>
+          </section>
+
+          <section className="editais-list">
             {filtered.map((edital) => (
-              <article className="edital-card" key={edital.id}>
-                <div className="edital-head">
-                  <div>
-                    <span className="eyebrow">Edital {edital.numero}</span>
-                    <h4>{edital.disciplina}</h4>
-                    <p className="muted">{edital.curso}</p>
+              <article className="edital-row" key={edital.id}>
+                <button className="edital-summary" onClick={() => setExpanded(expanded === edital.id ? null : edital.id)}>
+                  <div className="edital-number-block">
+                    <span>Edital</span>
+                    <strong>{edital.numero}</strong>
                   </div>
-                  <span className={`badge ${edital.status}`}>{edital.status}</span>
-                </div>
-                <div className="meta-grid">
-                  <div><span>Publicação</span><strong>{edital.data}</strong></div>
-                  <div><span>Etapa atual</span><strong>{edital.etapa}</strong></div>
-                </div>
-                <div className="progress"><span style={{ width: `${edital.progresso}%` }} /></div>
-                <div className="progress-label">{edital.progresso}% do fluxo demonstrativo</div>
-                {edital.status === "andamento" && (
-                  <div className="actions">
-                    <button className="secondary" onClick={() => arquivar(edital.id)}>Arquivar</button>
-                    <button className="primary" onClick={() => avancar(edital.id)}>Avançar etapa</button>
+                  <div className="edital-main-info">
+                    <h3>{edital.disciplina}</h3>
+                    <p>{edital.curso}</p>
+                  </div>
+                  <div className="edital-data"><span>Publicação</span><strong>{edital.data}</strong></div>
+                  <div className="edital-data"><span>Etapa atual</span><strong>{edital.etapa}</strong></div>
+                  <div className={`status-pill ${edital.status}`}>{edital.status}</div>
+                  <div className="chevron">{expanded === edital.id ? "⌃" : "⌄"}</div>
+                </button>
+
+                {expanded === edital.id && (
+                  <div className="edital-details">
+                    <div className="detail-grid">
+                      <div><span>Curso</span><strong>{edital.curso}</strong></div>
+                      <div><span>Caráter</span><strong>{edital.carater}</strong></div>
+                      <div><span>Data limite</span><strong>{edital.prazo}</strong></div>
+                    </div>
+
+                    <div className="workflow-label"><span>Progresso do fluxo</span><strong>{edital.progresso}%</strong></div>
+                    <div className="workflow-progress"><span style={{ width: `${edital.progresso}%` }} /></div>
+
+                    {edital.status === "andamento" && (
+                      <div className="detail-actions">
+                        <button className="outline-button" onClick={() => arquivar(edital.id)}>Arquivar edital</button>
+                        <button className="primary" onClick={() => avancar(edital.id)}>Avançar etapa</button>
+                      </div>
+                    )}
                   </div>
                 )}
               </article>
             ))}
+
             {filtered.length === 0 && <div className="empty">Nenhum edital nesta categoria.</div>}
-          </div>
-        </section>
-      </main>
+          </section>
+        </main>
+      </div>
     </div>
   );
 }
