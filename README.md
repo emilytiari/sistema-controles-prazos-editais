@@ -2,11 +2,11 @@
 
 **Demo:** https://scpedemo.netlify.app/
 
-O **SCPE (Sistema de Controle de Prazos de Editais)** é um projeto acadêmico desenvolvido para apoiar o acompanhamento de processos de contratação docente por meio de editais, com foco em **prazos, etapas, responsáveis, comunicação e rastreabilidade**.
+O **SCPE (Sistema de Controle de Prazos de Editais)** é um projeto acadêmico desenvolvido em equipe para apoiar o acompanhamento de processos de contratação docente por meio de editais, com foco em **prazos, etapas, responsáveis, comunicação e rastreabilidade**.
 
 > **Status do projeto:** em andamento. O SCPE está atualmente em sua etapa final de desenvolvimento acadêmico, com foco na consolidação da solução e na criação de uma camada de Business Intelligence para análise dos dados do processo.
 
-Esta versão foi preparada especificamente para portfólio e demonstração. Ela reproduz parte da experiência e da lógica do sistema original utilizando apenas dados fictícios e armazenamento temporário no navegador.
+Esta versão foi preparada para demonstração e apresentação do projeto. Ela reproduz parte da experiência e da lógica do sistema original utilizando apenas dados fictícios e armazenamento temporário no navegador.
 
 ## Objetivo do projeto original
 
@@ -151,8 +151,8 @@ Atuação principalmente na **idealização da experiência da aplicação e int
 - apoio na organização dos fluxos e telas da aplicação;
 - apoio ao desenvolvimento do backend;
 - gerenciamento e implementação de integrações utilizadas pelo sistema;
-- participação na evolução das funcionalidades e na conexão entre diferentes partes da solução.
-- participação na modelagem do banco de dados
+- participação na evolução das funcionalidades e na conexão entre diferentes partes da solução;
+- participação na modelagem do banco de dados.
 
 ### Emily Tiari Cordeiro Costa
 
@@ -182,16 +182,6 @@ Atuação principalmente na **documentação e compreensão do negócio**:
 - apoio na transformação das informações levantadas em documentação de requisitos e processos;
 - participação na organização da visão geral da solução e de seu contexto acadêmico.
 
-## Minha participação neste portfólio
-
-Este repositório está publicado em meu perfil pessoal, mas o **SCPE é um projeto desenvolvido em equipe**.
-
-Minha contribuição individual esteve especialmente relacionada à **arquitetura de dados e integrações**. Trabalhei na criação e manutenção do banco de dados, modelando entidades e relacionamentos para representar corretamente o fluxo real dos editais e ajustando essa estrutura conforme novos requisitos surgiam.
-
-Também atuei no gerenciamento das APIs e integrações necessárias para conectar a aplicação aos serviços utilizados pelo projeto, além de participar da implementação das regras que faziam a interface conversar com a camada de dados.
-
-A experiência com o SCPE foi especialmente importante por exigir que decisões técnicas fossem tomadas a partir do **entendimento do processo de negócio**, e não apenas da implementação de funcionalidades isoladas.
-
 ## Sobre esta versão de demonstração
 
 Este repositório **não é o ambiente de produção do SCPE**.
@@ -207,7 +197,7 @@ Nesta versão:
 - os dados criados durante o uso ficam somente na memória da aplicação;
 - ao recarregar, fechar a página ou sair da demonstração, o ambiente retorna ao estado inicial.
 
-O objetivo é permitir que visitantes e recrutadores possam **experimentar a lógica principal do sistema sem risco de alterar dados reais**.
+O objetivo é permitir que visitantes possam **experimentar a lógica principal do sistema sem risco de alterar dados reais**.
 
 ## O que pode ser testado na demo
 
@@ -275,4 +265,4 @@ A solução foi desenvolvida de forma colaborativa, envolvendo atividades de des
 
 ---
 
-**Este repositório apresenta uma versão sanitizada e demonstrativa de um projeto acadêmico ainda em andamento, publicada para fins de portfólio.**
+**Este repositório apresenta uma versão sanitizada e demonstrativa de um projeto acadêmico ainda em andamento, desenvolvida e mantida de forma colaborativa pela equipe.**
