@@ -1,6 +1,6 @@
 # SCPE — Sistema de Controle de Prazos de Editais
 
-Link da demo: https://scpedemo.netlify.app/
+**Demo:** https://scpedemo.netlify.app/
 
 O **SCPE (Sistema de Controle de Prazos de Editais)** é um projeto acadêmico desenvolvido para apoiar o acompanhamento de processos de contratação docente por meio de editais, com foco em **prazos, etapas, responsáveis, comunicação e rastreabilidade**.
 
@@ -49,8 +49,6 @@ Esse trabalho de análise foi essencial para transformar necessidades de negóci
 
 Os resultados das pesquisas e entrevistas foram convertidos em funcionalidades e regras da aplicação.
 
-Alguns exemplos dessa relação são:
-
 | Necessidade identificada | Solução proposta no SCPE |
 | --- | --- |
 | Dificuldade de saber em qual etapa o processo estava | Visualização da etapa atual e do progresso do edital |
@@ -97,6 +95,78 @@ Ao longo da evolução do projeto foram utilizadas ou estudadas diferentes tecno
 - Google Sheets em fases iniciais do protótipo.
 
 O projeto também passou por uma fase anterior de prototipação utilizando WordPress, antes da migração para uma arquitetura baseada em React e Supabase.
+
+### Uso de IA no desenvolvimento visual
+
+A interface visual da versão em React teve forte apoio do **Figma Make e de seus recursos de geração por IA**. Por isso, a autoria do projeto não é apresentada como um trabalho de design de interface desenvolvido integralmente de forma manual pela equipe.
+
+A participação dos integrantes esteve concentrada principalmente em **análise do negócio, definição de requisitos, idealização da experiência, banco de dados, integrações, APIs, implementação de funcionalidades, testes e documentação**.
+
+## Equipe e responsabilidades
+
+O SCPE foi desenvolvido de forma colaborativa. As responsabilidades abaixo representam as áreas em que cada integrante teve maior participação, embora várias atividades tenham sido realizadas em conjunto ao longo do projeto.
+
+### Felipe Brito
+
+Atuação concentrada principalmente na **estrutura técnica e de dados do sistema**:
+
+- criação e evolução do banco de dados em Supabase / PostgreSQL;
+- modelagem das tabelas de acordo com as regras e necessidades identificadas no negócio;
+- definição e ajuste dos relacionamentos entre as entidades;
+- gerenciamento de chaves primárias, chaves estrangeiras e relações entre tabelas;
+- adequação da estrutura de dados conforme o fluxo dos editais evoluiu;
+- integração entre aplicação e banco de dados;
+- gerenciamento e configuração de APIs utilizadas pelo sistema;
+- apoio na implementação e integração das funcionalidades do backend;
+- participação na transformação dos requisitos levantados em regras da aplicação.
+
+### Jaqueline da Silva Nascimento
+
+Atuação principalmente na **idealização da experiência da aplicação e integrações**:
+
+- participação na definição e idealização do frontend;
+- apoio na organização dos fluxos e telas da aplicação;
+- apoio ao desenvolvimento do backend;
+- gerenciamento e implementação de integrações utilizadas pelo sistema;
+- participação na evolução das funcionalidades e na conexão entre diferentes partes da solução.
+
+### Emily Tiari Cordeiro Costa
+
+Atuação tanto na **documentação quanto no desenvolvimento e validação do sistema**:
+
+- elaboração e evolução da documentação do projeto;
+- participação no desenvolvimento de funcionalidades;
+- execução de testes e validação dos fluxos implementados;
+- apoio na identificação de ajustes necessários durante a evolução do MVP.
+
+### Otávio Henrique Calmo da Silva
+
+Atuação tanto na **documentação quanto no desenvolvimento e testes**:
+
+- participação na documentação técnica e acadêmica do projeto;
+- desenvolvimento e apoio na implementação de funcionalidades;
+- realização de testes e validação do comportamento da aplicação;
+- contribuição para ajustes e evolução do sistema ao longo do projeto.
+
+### Adriane de Souza Rodrigues
+
+Atuação principalmente na **documentação e compreensão do negócio**:
+
+- participação significativa na elaboração e organização da documentação;
+- apoio no levantamento e consolidação das informações obtidas nas pesquisas e entrevistas;
+- contribuição para o entendimento do processo de negócio;
+- apoio na transformação das informações levantadas em documentação de requisitos e processos;
+- participação na organização da visão geral da solução e de seu contexto acadêmico.
+
+## Minha participação neste portfólio
+
+Este repositório está publicado em meu perfil pessoal, mas o **SCPE é um projeto desenvolvido em equipe**.
+
+Minha contribuição individual esteve especialmente relacionada à **arquitetura de dados e integrações**. Trabalhei na criação e manutenção do banco de dados, modelando entidades e relacionamentos para representar corretamente o fluxo real dos editais e ajustando essa estrutura conforme novos requisitos surgiam.
+
+Também atuei no gerenciamento das APIs e integrações necessárias para conectar a aplicação aos serviços utilizados pelo projeto, além de participar da implementação das regras que faziam a interface conversar com a camada de dados.
+
+A experiência com o SCPE foi especialmente importante por exigir que decisões técnicas fossem tomadas a partir do **entendimento do processo de negócio**, e não apenas da implementação de funcionalidades isoladas.
 
 ## Sobre esta versão de demonstração
 
@@ -165,16 +235,18 @@ O SCPE permitiu trabalhar não apenas aspectos técnicos de desenvolvimento, mas
 - transformação de necessidades de negócio em funcionalidades;
 - definição de perfis e permissões;
 - modelagem de dados;
-- integração entre sistemas;
+- relacionamentos e integridade entre entidades;
+- integração entre sistemas e APIs;
 - trabalho em equipe;
 - documentação de projeto;
+- testes e validação;
 - desenvolvimento incremental de um MVP.
 
 ## Contexto acadêmico
 
 Projeto desenvolvido no curso de **Gestão da Tecnologia da Informação da FATEC Franco da Rocha**, como parte de um Projeto Integrador realizado em equipe.
 
-A solução foi desenvolvida de forma colaborativa, envolvendo atividades de desenvolvimento, documentação, análise de negócio e gestão do projeto.
+A solução foi desenvolvida de forma colaborativa, envolvendo atividades de desenvolvimento, documentação, análise de negócio, banco de dados, integrações, testes e gestão do projeto.
 
 ---
 
