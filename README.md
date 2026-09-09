@@ -152,6 +152,7 @@ Atuação principalmente na **idealização da experiência da aplicação e int
 - apoio ao desenvolvimento do backend;
 - gerenciamento e implementação de integrações utilizadas pelo sistema;
 - participação na evolução das funcionalidades e na conexão entre diferentes partes da solução.
+- participação na modelagem do banco de dados
 
 ### Emily Tiari Cordeiro Costa
 
