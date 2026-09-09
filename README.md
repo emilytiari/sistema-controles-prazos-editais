@@ -129,7 +129,7 @@ A participação dos integrantes esteve concentrada principalmente em **análise
 
 O SCPE foi desenvolvido de forma colaborativa. As responsabilidades abaixo representam as áreas em que cada integrante teve maior participação, embora várias atividades tenham sido realizadas em conjunto ao longo do projeto.
 
-### Felipe Brito
+### Felipe Brito Godinho
 
 Atuação concentrada principalmente na **estrutura técnica e de dados do sistema**:
 
