@@ -1,5 +1,7 @@
 # SCPE — Sistema de Controle de Prazos de Editais
 
+Link da demo: https://scpedemo.netlify.app/
+
 O **SCPE (Sistema de Controle de Prazos de Editais)** é um projeto acadêmico desenvolvido para apoiar o acompanhamento de processos de contratação docente por meio de editais, com foco em **prazos, etapas, responsáveis, comunicação e rastreabilidade**.
 
 Esta versão foi preparada especificamente para portfólio e demonstração. Ela reproduz parte da experiência e da lógica do sistema original utilizando apenas dados fictícios e armazenamento temporário no navegador.
